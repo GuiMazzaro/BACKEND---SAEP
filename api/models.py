@@ -27,11 +27,19 @@ class area(models.Model):
     def __str__(self):
         return self.area
 
+class automoveisArea(models.Model):
+
+    area = models.ForeignKey(area, related_name="areasx", on_delete=models.CASCADE)
+    automaveis = models.ForeignKey(automoveis, related_name="automoveisx", on_delete=models.CASCADE)
+
+    def __int__(self):
+        return self.area
+
 class venda(models.Model):
     cliente = models.ForeignKey(cliente, related_name="clientes", on_delete=models.CASCADE)
     concessionaria = models.ForeignKey(concessionaria, related_name="concessionarias", on_delete=models.CASCADE)
 
-    def __str__(self):
+    def __int__(self):
         return self.cliente
 
 class alocacao(models.Model):

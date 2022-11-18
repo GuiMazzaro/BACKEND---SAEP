@@ -65,3 +65,20 @@ class getVendaTable(serializers.ModelSerializer):
         many = True
         model = venda
         fields = '__all__'
+
+class automoveisAreaTable(serializers.ModelSerializer):
+
+    class Meta: 
+        many = True
+        model = automoveisArea
+        fields = '__all__'
+
+class getAutomoveisAreaTable(serializers.ModelSerializer):
+
+    area = areaTable(read_only=True)
+    automaveis = automoveisTable(read_only=True)
+
+    class Meta: 
+        many = True
+        model = automoveisArea
+        fields = '__all__'

@@ -254,3 +254,54 @@ class GetVendaAPI(APIView):
             resultado = venda.objects.get(id=pk)
             serializer = getVendaTable(resultado)
             return Response(serializer.data)
+
+# CLASSE automoveisArea
+class automoveisAreaAPI(APIView):
+
+    def get(self, request, pk=''):
+
+        if pk == '':
+            resultado = automoveisArea.objects.all()
+            serializer = automoveisAreaTable(resultado, many=True)
+            return Response(serializer.data)
+
+        else:
+            resultado = automoveisArea.objects.get(id=pk)
+            serializer = automoveisAreaTable(resultado)
+            return Response(serializer.data)
+
+    def post(self, request):
+
+        serializer = automoveisAreaTable(data=request.data, many=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()        
+        return Response({"msg": "Inserido com sucesso"})
+    
+    def put(self, request, pk=''):
+
+        resultado = automoveisArea.objects.get(id=pk)
+        serializer = automoveisAreaTable(resultado, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+    
+    def delete(self, request, pk=''):
+
+        resultado = automoveisArea.objects.get(id=pk)       
+        resultado.delete()
+        return Response({"msg": "Apagado com sucesso"})
+
+#CLASSE VENDA GET
+class GetautomoveisAreaAPI(APIView):
+
+    def get(self, request, pk=''):
+
+        if pk == '':
+            resultado = automoveisArea.objects.all()
+            serializer = getAutomoveisAreaTable(resultado, many=True)
+            return Response(serializer.data)
+
+        else:
+            resultado = automoveisArea.objects.get(id=pk)
+            serializer = getAutomoveisAreaTable(resultado)
+            return Response(serializer.data)

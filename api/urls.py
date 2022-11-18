@@ -22,4 +22,12 @@ urlpatterns = [
     path("alocacao/<int:pk>", alocacaoAPI.as_view(), name="alocacaoParametros"),
     path("getalocacao/", GetalocacaoAPI.as_view(), name="getalocacao"),
 
+    path("vendas/", vendaAPI.as_view(), name="vendas"),
+    path("vendas/<int:pk>", vendaAPI.as_view(), name="vendasParametros"),
+    path("getvendas/", GetVendaAPI.as_view(), name="getvenda"),
+
+    path("automovelarea/", automoveisAreaAPI.as_view(), name="automoveisarea"),
+    path("automovelarea/<int:pk>", automoveisAreaAPI.as_view(), name="automoveisarea"),
+    path("getautomovelarea/", GetautomoveisAreaAPI.as_view(), name="getautomovelarea"),
+
 ]

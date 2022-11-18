@@ -50,3 +50,11 @@ class detVenda(admin.ModelAdmin):
     list_per_page = 10
 
 admin.site.register(venda, detVenda)
+
+class detAutomoveisArea(admin.ModelAdmin):
+    list_display = ('id', 'area', 'automaveis')
+    list_display_links = ('id',)
+    search_fields = ('area',)
+    list_per_page = 10
+
+admin.site.register(automoveisArea, detAutomoveisArea)
